@@ -1,6 +1,9 @@
 #include <iostream>
+#include <cmath> // imported math library
+#include <iomanip> // display precison
 #include "divisor.h"
 #include "multiplier.h"
+
 
 
 using namespace std;
@@ -31,7 +34,14 @@ int main(){
     double monthsOfLoan = multiplier( yearsOfLoan, monthsInYear );
 
     // Lets  add a Print statement
-    cout << principal << " " << interest << " " << yearsOfLoan << " " << monthInterest << " " << monthsOfLoan << endl;
+   // cout << principal << " " << interest << " " << yearsOfLoan << " " << monthInterest << " " << monthsOfLoan << endl;
+	
+	// lets create a payment plan for it 
+	double payment = 0.0;
+	payment = principal * (monthInterest / (1 - (pow((double)1 + monthInterest, - monthsOfLoan))));
+	
+	// Here I've added set-precision to preperly display the amount  also setios to make  the number better 
+	cout << "Monthfuly Payment is: " << setiosflags(ios::fixed) << setprecision(2) << payment << endl; 	
 
     return 0;
 
